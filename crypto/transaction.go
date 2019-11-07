@@ -40,6 +40,19 @@ func (transaction *Transaction) Sign(passphrase string) {
 	}
 }
 
+func (transaction *Transaction) SignWithPrivateKey(privateKey string) {
+    sk, _ := PrivateKeyFromHex(privateKey)
+
+    transaction.SenderPublicKey = HexEncode(sk.PublicKey.Serialize())
+    bytes := sha256.New()
+    _, _ = bytes.Write(transaction.ToBytes(true, true))
+
+    signature, err := sk.Sign(bytes.Sum(nil))
+    if err == nil {
+        transaction.Signature = HexEncode(signature)
+    }
+}
+
 func (transaction *Transaction) SecondSign(passphrase string) {
 	privateKey, _ := PrivateKeyFromPassphrase(passphrase)
 

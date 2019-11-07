@@ -19,3 +19,6 @@
 
 # Visual Studio Code
 .vscode
+
+# goland
+.idea

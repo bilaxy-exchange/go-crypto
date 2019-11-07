@@ -33,6 +33,27 @@ func BuildTransfer(recipient string, amount FlexToshi, vendorField string, passp
 	return buildSignedTransaction(transaction, passphrase, secondPassphrase)
 }
 
+func buildSignedTransactionWithPrivateKey(transaction *Transaction, privateKey string) *Transaction {
+    transaction.Timestamp = GetTime()
+    transaction.Sign(privateKey)
+    transaction.Id = transaction.GetId()
+
+    return transaction
+}
+
+func BuildTransferWithPrivateKey(recipient string, amount FlexToshi, vendorField string, privateKey string) *Transaction {
+    transaction := &Transaction{
+        Type:        TRANSACTION_TYPES.Transfer,
+        Fee:         GetFee(TRANSACTION_TYPES.Transfer),
+        RecipientId: recipient,
+        Amount:      amount,
+        VendorField: vendorField,
+        Asset:       &TransactionAsset{},
+    }
+
+    return buildSignedTransactionWithPrivateKey(transaction, privateKey)
+}
+
 func BuildSecondSignatureRegistration(passphrase string, secondPassphrase string) *Transaction {
 	transaction := &Transaction{
 		Type:  TRANSACTION_TYPES.SecondSignatureRegistration,

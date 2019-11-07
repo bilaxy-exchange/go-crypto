@@ -8,7 +8,7 @@
 package crypto
 
 import (
-	"github.com/ArkEcosystem/go-crypto/crypto/base58"
+	"github.com/bilaxy-exchange/go-crypto/crypto/base58"
 )
 
 func AddressFromPassphrase(passphrase string) (string, error) {
