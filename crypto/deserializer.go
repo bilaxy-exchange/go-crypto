@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/ArkEcosystem/go-crypto/crypto/base58"
+	"github.com/bilaxy-exchange/go-crypto/crypto/base58"
 )
 
 func DeserializeTransaction(serialized string) *Transaction {

@@ -8,7 +8,7 @@
 package crypto
 
 import (
-	"github.com/ArkEcosystem/go-crypto/crypto/base58"
+	"github.com/bilaxy-exchange/go-crypto/crypto/base58"
 	"github.com/btcsuite/btcd/btcec"
 	"golang.org/x/crypto/ripemd160"
 )

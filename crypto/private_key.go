@@ -10,7 +10,7 @@ package crypto
 import (
 	"crypto/sha256"
 
-	"github.com/ArkEcosystem/go-crypto/crypto/base58"
+	"github.com/bilaxy-exchange/go-crypto/crypto/base58"
 	"github.com/btcsuite/btcd/btcec"
 )
 
